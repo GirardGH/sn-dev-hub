@@ -1,0 +1,100 @@
+import { Client, Story, Development } from "./types";
+
+export const clients: Client[] = [
+  { id: "hwi", name: "HWI" },
+  { id: "sequens", name: "Sequens" },
+  { id: "fraikin", name: "Fraikin" },
+  { id: "ca-titres", name: "CA Titres" },
+];
+
+export const stories: Story[] = [
+  {
+    id: "1",
+    reference: "STRY001175",
+    title: "Portal | HWI dedicated Portal",
+    clientId: "hwi",
+    status: "Done",
+    type: "Change",
+    updatedAt: "2025-04-03",
+  },
+  {
+    id: "2",
+    reference: "STRY001172",
+    title: "Service Request | Assign Approver role",
+    clientId: "hwi",
+    status: "In Progress",
+    type: "Request",
+    updatedAt: "2025-04-02",
+  },
+  {
+    id: "3",
+    reference: "STRY001200",
+    title: "Laptop Order Flow",
+    clientId: "sequens",
+    status: "Backlog",
+    type: "Request",
+    updatedAt: "2025-04-01",
+  },
+];
+
+export const developments: Development[] = [
+  {
+    id: "d1",
+    clientId: "hwi",
+    storyId: "1",
+    type: "Business Rule",
+    name: "Set Manager from Department Head",
+    table: "sys_user",
+    author: "Ghislain",
+    updatedAt: "2025-04-03",
+  },
+  {
+    id: "d2",
+    clientId: "hwi",
+    storyId: "2",
+    type: "UI Action",
+    name: "Approve SR",
+    table: "sc_request",
+    author: "Ghislain",
+    updatedAt: "2025-04-02",
+  },
+  {
+    id: "d3",
+    clientId: "sequens",
+    storyId: "3",
+    type: "Script Include",
+    name: "LaptopOrderUtils",
+    table: "x_seq_laptop",
+    author: "Ghislain",
+    updatedAt: "2025-04-01",
+  },
+];
+
+/* Helpers */
+
+export function getClientById(id: string): Client | undefined {
+  return clients.find((c) => c.id === id);
+}
+
+export function getStoriesByClient(clientId: string): Story[] {
+  return stories.filter((s) => s.clientId === clientId);
+}
+
+export function getDevsByClient(clientId: string): Development[] {
+  return developments.filter((d) => d.clientId === clientId);
+}
+
+export function getStoryById(id: string): Story | undefined {
+  return stories.find((s) => s.id === id);
+}
+
+export function getDevsByStory(storyId: string): Development[] {
+  return developments.filter((d) => d.storyId === storyId);
+}
+
+export function getLatestDevsByClient(
+  clientId: string,
+  limit = 5
+): Development[] {
+  return getDevsByClient(clientId).slice(0, limit);
+}
