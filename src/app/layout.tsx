@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Sidebar from "@/components/Sidebar";
+// import Sidebar from "@/components/Sidebar";
+import { Shell } from "@/components/layout/Shell"
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
+
 
 export const metadata: Metadata = {
   title: "SN Dev Hub",
@@ -13,12 +16,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full">
-      <body className="h-full bg-slate-950 text-slate-100">
-        <div className="flex h-screen">
+    <html lang="en" className="h-full" suppressHydrationWarning>
+      <body className="h-full bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+        {/* <div className="flex h-screen">
           <Sidebar />
           <main className="flex-1 overflow-y-auto">{children}</main>
-        </div>
+        </div> */}
+        <ThemeProvider>
+          <Shell>{children}</Shell>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -10,7 +10,7 @@ export default function ClientsPage() {
     <div className="p-6 space-y-4">
       <div className="flex items-center justify-between">
         <h1 className="text-lg font-semibold">Clients</h1>
-        <button className="px-3 py-1.5 rounded-md bg-sky-600 text-[10px] font-medium hover:bg-sky-500">
+        <button className="px-3 py-1.5 rounded-md bg-sky-600 text-[10px] font-medium hover:bg-sky-500 text-slate-50">
           + New Client (soon)
         </button>
       </div>
