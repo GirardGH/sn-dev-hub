@@ -13,23 +13,27 @@ export default function ClientLayout({ children, params }: Props) {
   if (!client) return notFound();
 
   return (
-    <div className="flex flex-col h-full w-full">
-      <div className="px-6 pt-5 pb-3 border-b border-slate-900">
-        <div className="text-[9px] uppercase tracking-[0.18em] text-slate-500">
-          Client
-        </div>
-        <div className="flex items-center justify-between gap-3">
-          <h1 className="text-lg font-semibold text-slate-100">
-            {client.name}
-          </h1>
-          <button className="px-3 py-1.5 rounded-md border border-slate-700 text-[9px] text-slate-300 hover:border-sky-500 hover:text-sky-400">
+    <div className="flex flex-col h-screen w-full overflow-hidden">
+      {/* Sticky Header */}
+      <div className="sticky top-0 z-30 bg-[white] border-b border-slate-800 w-full
+      dark:bg-slate-950 dark:text-slate-50">
+        <div className="px-8 pt-5 pb-3 flex justify-between items-center">
+          <div>
+            <div className="text-[9px] uppercase tracking-[0.18em] text-slate-500">
+              Client
+            </div>
+            <h1 className="text-lg font-semibold text-slate-700 dark:text-slate-100">
+              {client.name}
+            </h1>
+          </div>
+          <button className="px-3 py-1.5 rounded-md border border-slate-700 text-[9px] dark:text-slate-300 hover:border-sky-500 hover:text-sky-400">
             Edit client (soon)
           </button>
         </div>
+        <ClientTabs clientId={client.id} />
       </div>
 
-      <ClientTabs clientId={client.id} />
-
+      {/* Main content scrollable */}
       <div className="flex-1 overflow-y-auto">{children}</div>
     </div>
   );

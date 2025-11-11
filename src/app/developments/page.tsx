@@ -7,7 +7,7 @@ export default function AllDevelopmentsPage() {
       <h1 className="text-lg font-semibold mb-4">All Developments</h1>
       <div className="border border-slate-900 rounded-lg overflow-hidden">
         <table className="min-w-full text-[10px]">
-          <thead className="bg-slate-900 text-slate-400 uppercase">
+          <thead className="bg-[#032d42]/95 text-slate-100 dark:bg-slate-900 dark:text-slate-400 uppercase">
             <tr>
               <th className="px-3 py-1.5 text-left">Client</th>
               <th className="px-3 py-1.5 text-left">Story</th>
@@ -27,9 +27,10 @@ export default function AllDevelopmentsPage() {
               return (
                 <tr
                   key={dev.id}
-                  className="border-t border-slate-900 hover:bg-slate-900/60"
+                  className="border-t border-slate-900 hover:bg-[#deeef3]
+                  dark:hover:bg-slate-900/60"
                 >
-                  <td className="px-3 py-1.5 text-slate-300">
+                  <td className="px-3 py-1.5 text-slate-900 dark:text-slate-300">
                     {client?.name ?? "—"}
                   </td>
                   <td className="px-3 py-1.5">
@@ -53,13 +54,13 @@ export default function AllDevelopmentsPage() {
                       {dev.name}
                     </Link>
                   </td>
-                  <td className="px-3 py-1.5 font-mono text-slate-400">
+                  <td className="px-3 py-1.5 font-mono text-slate-900 dark:text-slate-300">
                     {dev.table}
                   </td>
-                  <td className="px-3 py-1.5 text-slate-300">
+                  <td className="px-3 py-1.5 text-slate-900 dark:text-slate-300">
                     {dev.author}
                   </td>
-                  <td className="px-3 py-1.5 text-slate-400">
+                  <td className="px-3 py-1.5 text-slate-900 dark:text-slate-300">
                     {dev.updatedAt}
                   </td>
                 </tr>
