@@ -1,14 +1,15 @@
+"use client"
+import { useState } from "react";
 import Link from "next/link";
 import { developments, clients, stories } from "@/lib/mockData";
+import ListLayout from "@/components/layout/ListLayout";
 
 export default function AllDevelopmentsPage() {
   return (
-    <div className="p-6">
-      <h1 className="text-lg font-semibold mb-4">All Developments</h1>
-      <div className="border border-slate-900 rounded-lg overflow-hidden">
-        <table className="min-w-full text-[10px]">
-          <thead className="bg-[#032d42]/95 text-slate-100 dark:bg-slate-900 dark:text-slate-400 uppercase">
-            <tr>
+<ListLayout title="All Developments" newLink="developments/new">
+      <table className="min-w-full text-[11px] border-collapse table-fixed">
+        <thead className="bg-[#032d42] dark:bg-slate-900 text-slate-50 dark:text-slate-400 uppercase sticky top-0 z-10">
+          <tr className="border-t border-slate-200 dark:border-slate-800 hover:bg-cyan-800/20 dark:hover:bg-slate-900/40 transition-colors">
               <th className="px-3 py-1.5 text-left">Client</th>
               <th className="px-3 py-1.5 text-left">Story</th>
               <th className="px-3 py-1.5 text-left">Type</th>
@@ -18,7 +19,7 @@ export default function AllDevelopmentsPage() {
               <th className="px-3 py-1.5 text-left">Updated</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="[&>tr:nth-child(even)]:bg-slate-400/10">
             {developments.map((dev) => {
               const client = clients.find((c) => c.id === dev.clientId);
               const story = dev.storyId
@@ -27,8 +28,7 @@ export default function AllDevelopmentsPage() {
               return (
                 <tr
                   key={dev.id}
-                  className="border-t border-slate-900 hover:bg-[#deeef3]
-                  dark:hover:bg-slate-900/60"
+                  className="border-t dark:border-slate-800 hover:bg-cyan-800/20 dark:hover:bg-slate-800/60 transition-colors"
                 >
                   <td className="px-3 py-1.5 text-slate-900 dark:text-slate-300">
                     {client?.name ?? "—"}
@@ -68,7 +68,6 @@ export default function AllDevelopmentsPage() {
             })}
           </tbody>
         </table>
-      </div>
-    </div>
+</ListLayout>
   );
 }

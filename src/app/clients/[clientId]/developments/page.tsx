@@ -1,13 +1,12 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import FilterButton from "@/components/ui/FilterButton";
-import NewButton from "@/components/ui/NewButton";
 import {
   getClientById,
   getDevsByClient,
   stories as allStories,
 } from "@/lib/mockData";
+import ListLayout from "@/components/layout/ListLayout";
 
 type Props = {
   params: { clientId: string };
@@ -21,21 +20,7 @@ export default function ClientDevelopmentsPage({ params }: Props) {
   const [filterOpen, setFilterOpen] = useState(false);
 
   return (
-<div className="h-full flex flex-col">
-  {/* Titre sticky */}
-  <div className="sticky top-0 z-20 px-8 py-3 dark:bg-slate-950 border-b dark:border-slate-800 flex items-center justify-between">
-    <div className="flex items-center gap-4">
-    <h2 className="text-sm font-semibold dark:text-slate-200">
-      Developments for {client.name}
-    </h2>
-    <FilterButton onClick={() => setFilterOpen(!filterOpen)} active={filterOpen} />
-      </div>
-      <NewButton href="stories/new" />
-  </div>
-
-  {/* Conteneur avec hauteur fixe et scroll seulement sur tbody */}
-  <div className="flex-1 px-8 pb-8 dark:bg-slate-950">
-    <div className=" max-h-[calc(100vh-200px)] overflow-auto scrollbar-thin">
+<ListLayout title={`Developments for ${client.name}`} newLink="develoments/new">
       <table className="min-w-full text-[11px] border-collapse table-fixed">
         <thead className="bg-[#032d42] dark:bg-slate-900 text-slate-50 dark:text-slate-400 uppercase sticky top-0 z-10">
           <tr className="border-t border-slate-200 dark:border-slate-800 dark:hover:bg-slate-900/40 transition-colors">
@@ -104,9 +89,7 @@ export default function ClientDevelopmentsPage({ params }: Props) {
           )}
         </tbody>
       </table>
-    </div>
-  </div>
-</div>
+</ListLayout>
 
   );
 }
