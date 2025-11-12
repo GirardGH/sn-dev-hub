@@ -44,7 +44,7 @@ export default function AllStoriesPage() {
                   <td className="px-3 py-1.5 text-slate-900 dark:text-slate-300">
                     {client?.name ?? "—"}
                   </td>
-                  <td className="px-3 py-1.5 font-mono">
+                  <td className="px-3 py-1.5">
                     <Link
                       href={`/stories/${story.id}`}
                       className="text-sky-400 hover:underline"

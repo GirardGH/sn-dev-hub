@@ -13,7 +13,6 @@ export function ClientTabs({ clientId }: Props) {
   const base = `/clients/${clientId}`;
 
   const tabs = [
-    { href: base, label: "Overview" },
     { href: `${base}/stories`, label: "Stories" },
     { href: `${base}/developments`, label: "Developments" },
   ];

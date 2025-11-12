@@ -22,10 +22,10 @@ export default function ClientsPage() {
           return (
             <Link
               key={client.id}
-              href={`/clients/${client.id}`}
-              className="border border-slate-900 rounded-lg p-4 hover:border-sky-500/60 hover:bg-slate-900/40 transition-colors"
+              href={`/clients/${client.id}/stories`}
+              className="border border-slate-900 rounded-lg p-4 hover:border-sky-500/60 hover:bg-[#deeef3]  dark:hover:bg-slate-900/40 transition-colors"
             >
-              <div className="font-semibold text-slate-100 mb-1">
+              <div className="font-semibold dark:text-slate-100 mb-1">
                 {client.name}
               </div>
               <div className="text-[10px] text-slate-400">

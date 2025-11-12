@@ -32,7 +32,7 @@ export default function ClientStoriesPage({ params }: Props) {
                 key={story.id}
                 className="border-t dark:border-slate-800 dark:hover:bg-slate-800/60 transition-colors"
               >
-                <td className="px-3 py-1.5 font-mono">
+                <td className="px-3 py-1.5">
                   <Link
                     href={`/stories/${story.id}`}
                     className="text-sky-400 hover:underline"

@@ -35,7 +35,9 @@ export function Sidebar() {
         <div className="text-xs font-semibold text-slate-500 uppercase mb-2">
           Workspace
         </div>
-        <NavItem href="/clients" label="Clients" active={isActive("/clients")} />
+        <NavItem href="/clients" label="Clients"   active={
+    pathname === "/clients" || pathname === "/clients/"
+  } />
         <NavItem href="/stories" label="All Stories" active={isActive("/stories")} />
         <NavItem href="/developments" label="All Developments" active={isActive("/developments")} />
       </div>
@@ -50,7 +52,7 @@ export function Sidebar() {
           {clients.map((c) => (
             <NavItem
               key={c.id}
-              href={`/clients/${c.id}`}
+              href={`/clients/${c.id}/stories`}
               label={c.name}
               active={isActive(`/clients/${c.id}`)}
               small
