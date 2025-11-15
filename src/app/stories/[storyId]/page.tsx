@@ -12,8 +12,13 @@ import {
 
 import ListLayout from "@/components/layout/ListLayout";
 
+
+
+
 // --- Small UI component for floating label fields --- //
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
+
+
   return (
     <div className="relative group">
       <label className="
@@ -35,6 +40,9 @@ export default function StoryDetailPage({ params }: { params: { storyId: string 
   const client = getClientById(story.clientId);
   const devs = getDevsByStory(story.id);
   const [filterOpen, setFilterOpen] = useState(false);
+
+    const MAX_ROWS = 8;
+const limitedDevs = devs.slice(0, MAX_ROWS);
 
   return (
     <div className="h-full flex flex-col dark:bg-slate-950">
@@ -64,7 +72,7 @@ export default function StoryDetailPage({ params }: { params: { storyId: string 
       </div>
 
       {/* ----------------------- MAIN CONTENT SCROLL ----------------------- */}
-      <div className="h-screen overflow-auto px-8 py-6 pb-24 space-y-1 scrollbar-thin">
+      <div className="h-screen px-8 py-6 pb-24 space-y-10 overflow-auto scrollbar-thin">
 
         {/* ----------------------- STORY FORM ----------------------- */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -174,12 +182,13 @@ export default function StoryDetailPage({ params }: { params: { storyId: string 
         </div>
 
         {/* ----------------------- LINKED DEVELOPMENTS ----------------------- */}
-        <div className="space-y-4">
+        <div className="max-h-[16rem]">
 
           {/* Sticky header for linked devs */}
 <ListLayout title={`Developments for ${client.name}`} newLink="develoments/new" >
       <table className="min-w-full text-[11px] border-collapse table-fixed">
         <thead className="bg-[#032d42] dark:bg-slate-900 text-slate-50 dark:text-slate-400 uppercase sticky top-0 z-10">
+          
           <tr className="border-t border-slate-200 dark:border-slate-800 dark:hover:bg-slate-900/40 transition-colors">
             <th className="px-3 py-2 text-left w-[120px]">Story</th>
             <th className="px-3 py-2 text-left w-[120px]">Type</th>
@@ -188,63 +197,69 @@ export default function StoryDetailPage({ params }: { params: { storyId: string 
             <th className="px-3 py-2 text-left w-[140px]">Author</th>
             <th className="px-3 py-2 text-left w-[120px]">Updated</th>
           </tr>
+           
         </thead>
 
-        <tbody className="[&>tr:nth-child(even)]:bg-slate-400/10">
-          {devs.map((dev) => {
-            const story = dev.storyId
-              ? allStories.find((s) => s.id === dev.storyId)
-              : undefined;
-            return (
-              <tr
-                key={dev.id}
-                className="border-t dark:border-slate-800 dark:hover:bg-slate-800/60 transition-colors"
-              >
-                <td className="px-3 py-2 truncate">
-                  {story ? (
-                    <Link
-                      href={`/stories/${story.id}`}
-                      className="text-sky-400 hover:underline"
-                    >
-                      {story.reference}
-                    </Link>
-                  ) : (
-                    "Unlinked"
-                  )}
-                </td>
-                <td className="px-3 py-2 truncate">{dev.type}</td>
-                <td className="px-3 py-2 truncate">
-                  <Link
-                    href={`/developments/${dev.id}`}
-                    className="text-sky-400 hover:underline"
-                  >
-                    {dev.name}
-                  </Link>
-                </td>
-                <td className="px-3 py-2 dark:text-slate-400 truncate">
-                  {dev.table}
-                </td>
-                <td className="px-3 py-2 dark:text-slate-300 truncate">
-                  {dev.author}
-                </td>
-                <td className="px-3 py-2 dark:text-slate-400 truncate">
-                  {dev.updatedAt}
-                </td>
-              </tr>
-            );
-          })}
+<tbody className="[&>tr:nth-child(even)]:bg-slate-400/10">
 
-          {devs.length === 0 && (
-            <tr>
-              <td
-                colSpan={6}
-                className="px-3 py-3 text-center text-slate-500"
-              >
-                No developments yet.
-              </td>
-            </tr>
+  {limitedDevs.map((dev) => {
+    const story = dev.storyId
+      ? allStories.find((s) => s.id === dev.storyId)
+      : undefined;
+
+    return (
+      <tr
+        key={dev.id}
+        className="border-t dark:border-slate-800 dark:hover:bg-slate-800/60 transition-colors"
+      >
+        <td className="px-3 py-2 truncate">
+          {story ? (
+            <Link
+              href={`/stories/${story.id}`}
+              className="text-sky-400 hover:underline"
+            >
+              {story.reference}
+            </Link>
+          ) : (
+            "Unlinked"
           )}
-        </tbody>
+        </td>
+
+        <td className="px-3 py-2 truncate">{dev.type}</td>
+
+        <td className="px-3 py-2 truncate">
+          <Link
+            href={`/developments/${dev.id}`}
+            className="text-sky-400 hover:underline"
+          >
+            {dev.name}
+          </Link>
+        </td>
+
+        <td className="px-3 py-2 dark:text-slate-400 truncate">
+          {dev.table}
+        </td>
+
+        <td className="px-3 py-2 dark:text-slate-300 truncate">
+          {dev.author}
+        </td>
+
+        <td className="px-3 py-2 dark:text-slate-400 truncate">
+          {dev.updatedAt}
+        </td>
+      </tr>
+    );
+  })}
+
+  {devs.length === 0 && (
+    <tr>
+      <td colSpan={6} className="px-3 py-3 text-center text-slate-500">
+        No developments yet.
+      </td>
+    </tr>
+  )}
+</tbody>
+
       </table>
 </ListLayout>
             </div>
