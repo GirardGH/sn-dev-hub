@@ -15,7 +15,7 @@ export default function ClientsPage() {
         </button>
       </div>
 
-      <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3 max-h-[80vh] overflow-auto pr-2 scrollbar-thin">
         {clients.map((client) => {
           const stories = getStoriesByClient(client.id);
           const devs = getDevsByClient(client.id);

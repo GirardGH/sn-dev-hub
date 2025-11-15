@@ -13,11 +13,11 @@ export default function ClientLayout({ children, params }: Props) {
   if (!client) return notFound();
 
   return (
-    <div className="flex flex-col h-screen w-full overflow-hidden">
+    <div className="flex flex-col w-full overflow-hidden">
       {/* Sticky Header */}
       <div className="sticky top-0 z-30 bg-[white] border-b border-slate-800 w-full
       dark:bg-slate-950 dark:text-slate-50">
-        <div className="px-8 pt-5 pb-3 flex justify-between items-center">
+        <div className="px-8 pt-1 pb-2 flex justify-between items-center">
           <div>
             <div className="text-[9px] uppercase tracking-[0.18em] text-slate-500">
               Client

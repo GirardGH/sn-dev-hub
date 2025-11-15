@@ -64,13 +64,13 @@ export default function ClientDevelopmentsPage({ params }: Props) {
                     {dev.name}
                   </Link>
                 </td>
-                <td className="px-3 py-2 font-mono text-slate-400 truncate">
+                <td className="px-3 py-2 dark:text-slate-400 truncate">
                   {dev.table}
                 </td>
-                <td className="px-3 py-2 text-slate-300 truncate">
+                <td className="px-3 py-2 dark:text-slate-300 truncate">
                   {dev.author}
                 </td>
-                <td className="px-3 py-2 text-slate-400 truncate">
+                <td className="px-3 py-2 dark:text-slate-400 truncate">
                   {dev.updatedAt}
                 </td>
               </tr>

@@ -42,10 +42,10 @@ export default function ClientStoriesPage({ params }: Props) {
                 </td>
                 <td className="px-3 py-1.5">{story.title}</td>
                 <td className="px-3 py-1.5">{story.status}</td>
-                <td className="px-3 py-1.5 text-slate-400">
+                <td className="px-3 py-1.5 dark:text-slate-400">
                   {story.type}
                 </td>
-                <td className="px-3 py-1.5 text-slate-400">
+                <td className="px-3 py-1.5 dark:text-slate-400">
                   {story.updatedAt}
                 </td>
               </tr>
