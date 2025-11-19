@@ -5,10 +5,13 @@ export type Client = {
 
 export type StoryStatus = "Backlog" | "In Progress" | "Done";
 export type StoryType = "Incident" | "Request" | "Change" | "Other";
+export type StoryTicketType = "Request" | "Change" | "Change" | "Other";
 
 export type Story = {
   id: string;
   reference: string;
+  shortDescription: string;
+  ticketType: StoryTicketType;
   title: string;
   clientId: string;
   status: StoryStatus;

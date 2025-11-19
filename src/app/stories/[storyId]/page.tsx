@@ -134,20 +134,9 @@ export default function StoryDetailPage({
               />
             </Field>
 
-            {/* Description */}
-            <Field label="Description">
-              <textarea
-                defaultValue={story.description}
-                className="
-                  w-full px-3 py-3 rounded-lg
-                  dark:bg-slate-900 dark:text-slate-200 text-[12px] 
-                  h-[150px]
-                  border border-slate-700 
-                  focus:outline-none focus:ring-2 focus:ring-sky-600
-                "
-              />
-            </Field>
+
           </div>
+
 
           {/* RIGHT COLUMN -------------------------------------- */}
           <div className="space-y-6">
@@ -205,6 +194,21 @@ export default function StoryDetailPage({
               />
             </Field>
           </div>
+          <div className="w-screen">
+                                {/* Description */}
+            <Field label="Description">
+              <textarea
+                defaultValue={story.description}
+                className="
+                  w-full px-3 py-3 rounded-lg
+                  dark:bg-slate-900 dark:text-slate-200 text-[12px] 
+                  h-[150px]
+                  border border-slate-700 
+                  focus:outline-none focus:ring-2 focus:ring-sky-600
+                "
+              />
+            </Field>
+            </div>
         </div>
 
         {/* ----------------------- LINKED DEVELOPMENTS ----------------------- */}
