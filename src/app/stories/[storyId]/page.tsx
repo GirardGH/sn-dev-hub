@@ -222,7 +222,7 @@ export default function StoryDetailPage({
       content: (
           <ListLayout
             title={`Linked Developments`}
-            newLink="develoments/new"
+            newLink={`/stories/${story.id}/developments/new`}
           >
             <table className="min-w-full text-[11px] border-collapse table-fixed">
               <thead className="bg-[#032d42] dark:bg-slate-900 text-slate-50 dark:text-slate-400 uppercase sticky top-0 z-10">
