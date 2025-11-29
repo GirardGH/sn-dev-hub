@@ -20,7 +20,7 @@ export default function DevelopmentDetailPage({ params }: Props) {
         {client && (
           <>
             <Link
-              href={`/clients/${client.id}`}
+              href={`/clients/${client.id}/stories`}
               className="hover:text-sky-400"
             >
               {client.name}
@@ -75,7 +75,7 @@ export default function DevelopmentDetailPage({ params }: Props) {
           )}
           {client && (
             <Link
-              href={`/clients/${client.id}`}
+              href={`/clients/${client.id}/stories`}
               className="px-3 py-1.5 rounded-md border border-slate-700 text-[9px] hover:border-sky-500 hover:text-sky-400"
             >
               ← Back to client
