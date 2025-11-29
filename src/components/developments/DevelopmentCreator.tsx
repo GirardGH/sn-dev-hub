@@ -7,9 +7,11 @@ import XmlImporter from "./XmlImporter";
 
 export default function DevelopmentCreator({
   storyId,
+  stories = [],
   onSubmit,
 }: {
   storyId?: string;
+  stories?: any[];
   onSubmit: (dev: Development) => void;
 }) {
   const [method, setMethod] = useState<"manual" | "xml">("manual");
@@ -54,7 +56,7 @@ export default function DevelopmentCreator({
         />
       )}
 
-      <DevelopmentForm value={dev} onChange={setDev} />
+      <DevelopmentForm value={dev} onChange={setDev} stories={stories} />
 
       <div className="flex justify-end gap-3 pt-4">
         <button

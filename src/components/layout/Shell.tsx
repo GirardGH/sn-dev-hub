@@ -1,7 +1,5 @@
-"use client";
-
 import { ReactNode } from "react";
-import { Sidebar } from "@/components/Navigation/Sidebar";
+import Sidebar from "../sidebar/Sidebar"
 
 export function Shell({ children }: { children: ReactNode }) {
   return (

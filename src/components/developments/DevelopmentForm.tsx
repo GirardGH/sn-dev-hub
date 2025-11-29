@@ -7,13 +7,16 @@ import {
   ARTIFACT_LABELS,
   emptyDevByType,
 } from "@/lib/developmentTypes";
+import ReferenceStoryInput from "../ReferenceStoryInput";
 
 type Props = {
   value: Development;
   onChange: (next: Development) => void;
+  stories: any[]; // ajout
 };
 
-export default function DevelopmentForm({ value, onChange }: Props) {
+
+export default function DevelopmentForm({ value, onChange, stories }: Props) {
   const type = value.type;
 
   const setBase = (patch: Partial<Development>) =>
@@ -59,6 +62,18 @@ export default function DevelopmentForm({ value, onChange }: Props) {
             className="input"
           />
         </Field>
+
+        <Field label="Story">
+<Field label="Story">
+  <ReferenceStoryInput
+    value={value.storyId}
+    clientId={value.clientId!}
+    onChange={(id) => setBase({ storyId: id ?? null })}
+  />
+</Field>
+
+</Field>
+
 
         <Field label="Scope">
           <input

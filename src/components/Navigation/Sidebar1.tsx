@@ -6,7 +6,7 @@ import { clients } from "@/lib/mockData";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/components/theme/ThemeProvider";
 
-export function Sidebar() {
+export function Sidebar1() {
   const pathname = usePathname();
 
   const isActive = (href: string) =>
